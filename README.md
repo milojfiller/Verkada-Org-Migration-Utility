@@ -48,105 +48,118 @@ For each subsystem, the tool:
 
 ## Migration Capabilities by Product
 
-### 1. Access Control (`Access.py`)
+### Access Control (`Access.py`)
 
 Automated:
-- Users (name, email, phone, department, title)
 - Access Groups
-- Group Membership
-- Credentials: Entry Codes, MFA, Keycards, LPR Plates
-- BLE Unlock state
-- Remote Unlock state
-- User start/end dates
+- Users (first name, last name, email, department, title, phone, etc.)
+- Group membership
+- BLE unlock state
+- Remote unlock state
+- Start and end dates
+- Entry codes
+- Keycards
+- License plates
+- MFA codes
 
 Manual Rebuild Required:
-- Access Levels
-- Door hardware configuration
-- Exception calendars
-- Installer settings, AUX, REX
-- Schedules, lockdown scenarios, roll call
+- Access Levels: names, doors, sites, schedules
+- Door Exception Calendars
+- Doors: controller assignment, port, lock type, inputs, etc.
+- Controller hardware configuration
+- Door schedules, lockdown scenarios, AUX behaviors, etc.
 
 Outputs:
+- Full Access Migration Report
 - doors_backup.csv  
 - access_levels_backup.csv  
 - door_exception_calendars_backup.csv  
-- Full Access migration report
 
 ---
 
-### 2. Cameras (`Cameras.py`)
+### Cameras (`Cameras.py`)
 
 Automated:
 - Cloud Backup settings
 - Audio settings
-- People / Vehicle Analytics flags
-- Export of all camera metadata
-- POI export and recreation
+- LPOIs
+- POIs (just saved in CSV)
+- Full individual camera configuration data for efficient migration:
+  - Camera metadata (model, serial, site, firmware, MAC, IP)
+  - People & Vehicle analytics toggle state
+  - Location (+ lat/lon)
 
 Manual:
-- Camera admin settings
-- Grids, layouts, alerts
-- Historical footage (cannot be moved)
+- Camera claiming / decommissioning
+- Motion zones
+- Privacy regions
+- Detection zones (people/vehicle analytics)
+- Alerts
+- Archive history
+- Historical footage
+- Incidents
 
 Outputs:
-- camera_data_backup.csv  
 - Camera Migration Report
+- camera_data_backup.csv
+- pois_backup.csv
+- lpois_backup.csv
 
 ---
 
-### 3. Cloud Backup + Audio Restore (`CloudBackup&Audio.py`)
+### Cloud Backup + Audio Restore (`CloudBackup&Audio.py`)
 
 Automated:
-- Serial → camera_id remapping in Org B
 - Restore cloud backup settings
 - Restore audio settings
 
 Outputs:
-- Detailed restore log
+- Detailed restore information
 
 ---
 
-### 4. Guest (`Guest.py`)
+### Guest (`Guest.py`)
 
-Automated (Export Only):
+Automated (Backup Only):
 - Guest Sites
-- Guest Types (names, behavior, metadata)
+- Guest Types
 - Hosts
+- Guest Visit History (24 hours)
 
 Manual Rebuild:
-- Guest Type workflows
-- Documents (NDAs, safety forms)
-- iPad kiosk pairing
-- Printers
-- Access & camera integrations
-- Visit history
+- Branding, logos, badge themes
+- iPad pairing
+- Printer pairing
+- Guest Type steps, questionnaires, documents
+- Camera feeds displayed on kiosk
+- Access Control integrations
+- Deny lists
+- Etc.
 
 Outputs:
-- guest_types.csv  
-- guest_hosts.csv  
 - Guest Migration Report
-
+- guest_sites_backup
+- guest_types_backup
+- guest_hosts_backup
+- guest_visits_backup
+  
 ---
 
-### 5. Helix Event Types (`Helix.py`)
+### Helix Event Types (`Helix.py`)
 
 Automated:
-- Export Event Types
-- Recreate Event Types in Org B
-
-Manual:
-- Historical events
+- Helix Event Types
 
 Outputs:
-- helix_event_types.csv  
 - Helix Migration Report
+- helix_event_types.csv  
 
 ---
 
-### 6. Viewing Stations (`ViewingStations.py`)
+### Viewing Stations (`ViewingStations.py`)
 
-Automated:
-- Export all Viewing Stations + metadata
+Automated (Backup Only):
+- Viewing Stations + metadata
 
 Manual:
 - Claiming Viewing Stations
@@ -157,42 +170,13 @@ Outputs:
 
 ---
 
-## What the Utility Can and Cannot Automate
-
-### Fully Automatable Today
-- Users, groups, credentials  
-- Access Group relationships  
-- BLE / Remote unlock  
-- Camera cloud backup + audio  
-- POIs  
-- Helix Event Types  
-- Guest metadata exports  
-- Viewing Station exports  
-
-### Requires Manual Rebuild (API Limitations)
-- Access Levels  
-- Doors + controller hardware  
-- Door schedules + exception calendars  
-- Most camera admin settings  
-- Guest workflows + documents  
-- Historical footage / visit logs  
-- SSO configuration  
-
-All required manual steps are generated as Markdown reports.
-
----
-
 ## Safety and Safeguards
 
 - Org A is always read-only  
 - All write operations target only Org B  
 - The tool never deletes, modifies, or unassigns devices in Org A  
-- Worst case: Org B may need cleanup (all changes are additive)  
-- Historical footage, logs, and sensitive customer data are never touched  
-- The tool is safe to run multiple times  
-
-This ensures SEs and partners can use the tool confidently during migrations.
-
+- Historical footage, logs, and sensitive customer data are never touched
+  
 ---
 
 ## Repository Structure
