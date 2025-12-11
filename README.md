@@ -3,6 +3,7 @@
 ## Introduction
 
 Migrating a customer from one Verkada organization to another can be time-consuming, error-prone, and heavily dependent on screenshots and undocumented processes.  
+
 The Verkada Org Migration Utility was developed to streamline this workflow by automating every step that the Verkada Public API supports, while generating structured reports and CSVs for everything that must be rebuilt manually.
 
 The core objective is to provide SEs, partners, and developers with a repeatable, safe, and auditable migration process.
