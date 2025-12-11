@@ -1,6 +1,4 @@
 # Verkada Org Migration Utility
-Automating org-to-org migrations using the Verkada Public API
-
 ---
 
 ## Introduction
