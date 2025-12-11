@@ -108,21 +108,6 @@ Required:
 
 ---
 
-## Notes and Limitations
-
-The Public API does NOT support:
-
-- Historical camera footage
-- Guest Visit history
-- SSO configuration
-- Door schedules, roll call, lockdown scenarios
-- Controller hardware configuration
-- Certain org-level camera settings
-
-For these items, the tool generates CSVs and detailed manual-rebuild workflows.
-
----
-
 ## Contributions
 
 Pull requests are welcome — especially improvements to error handling, mapping logic, API coverage, or optional UI integrations.
