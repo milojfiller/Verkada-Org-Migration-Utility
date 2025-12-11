@@ -207,8 +207,8 @@ pip install -r requirements.txt
 
 `.env` file:
 
-VERKADA_API_KEY_A="ORG_A_API_KEY"
-VERKADA_API_KEY_B="ORG_B_API_KEY"
+- VERKADA_API_KEY_A="ORG_A_API_KEY"
+- VERKADA_API_KEY_B="ORG_B_API_KEY"
 
 ---
 
@@ -255,11 +255,11 @@ pip install -r requirements.txt
 
 `.env` in the project root:
 
-VERKADA_API_KEY_A="API_KEY_FOR_ORG_A"
-VERKADA_API_KEY_B="API_KEY_FOR_ORG_B"
+- VERKADA_API_KEY_A="API_KEY_FOR_ORG_A"
+  - Org A = Source  
 
-Org A = Source  
-Org B = Destination  
+- VERKADA_API_KEY_B="API_KEY_FOR_ORG_B"
+  - Org B = Destination  
 
 ### 5. Run a Migration Script
 
