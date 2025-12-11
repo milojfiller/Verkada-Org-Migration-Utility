@@ -216,12 +216,12 @@ VERKADA_API_KEY_B="ORG_B_API_KEY"
 
 Run modules individually based on migration/customer need:
 
-python scripts/Access.py
-python scripts/Cameras.py
-python scripts/CloudBackup&Audio.py
-python scripts/Guest.py
-python scripts/Helix.py
-python scripts/ViewingStations.py
+- python scripts/Access.py
+- python scripts/Cameras.py
+- python scripts/CloudBackup&Audio.py
+- python scripts/Guest.py
+- python scripts/Helix.py
+- python scripts/ViewingStations.py
 
 ---
 ## Quick Start Guide
