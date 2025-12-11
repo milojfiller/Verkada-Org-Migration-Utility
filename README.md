@@ -1,5 +1,4 @@
 # Verkada Org Migration Utility
----
 
 ## Introduction
 
